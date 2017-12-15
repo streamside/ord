@@ -9,17 +9,8 @@ const userName = 'streamside';
 /*
  * User
  */
-// Get information for user landing page
-router.get('/api/user', function(req, res) {
-  return User.findOne({ userName }).exec(function(err, user) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    res.json(user)
-  });
-});
 
+// Get information for user landing page
 /*
 Returns:
 {
@@ -31,8 +22,27 @@ Returns:
     },
 }
 */
+router.get('/api/user', function(req, res) {
+  return User.findOne({ userName }).exec(function(err, user) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    res.json(user)
+  });
+});
 
 // Get word to answer
+/*
+Returns:
+{
+    id,
+    name,
+    description,
+    difficulty,
+    ...
+}
+*/
 router.get('/api/user/word', function(req, res) {
 
   // Find words the user has answered
@@ -54,22 +64,19 @@ router.get('/api/user/word', function(req, res) {
     });
   });
 });
+
+// Answer if user knows the word
 /*
-Returns:
+Input:
 {
-    id,
-    name,
-    description,
-    difficulty,
-    ...
+    id, // Id of word
+    correct
 }
 */
-
-// Answer to the word
 router.post('/api/user/word', function(req, res) {
   console.log(req.body);
   const wordId = req.body.wordId;
-  const correct = req.body.correct == 'true';
+  const correct = req.body.correct;
 
   return User.findOne({ userName }).exec(function(err, user) {
     if (err) {
@@ -87,15 +94,26 @@ router.post('/api/user/word', function(req, res) {
     }).then(function(user) {
       console.log('after save', user)
       res.send('OK');
-    });;
+    });
   });
 });
-/*
-Input:
-{
-    id, // Id of word
-    correct
-}
-*/
+
+// Wipes word answering history
+router.post('/api/user/resetWords', function(req, res) {
+  User.findOne({ userName }).exec(function(err, user) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    user.words = [];
+    user.save(function(err) {
+      console.log('User saved. Error: ', err);
+    }).then(function(user) {
+      console.log('after save', user)
+      res.send('OK');
+    });
+  })
+});
 
 module.exports = router;

@@ -15,7 +15,8 @@ var app = express();
 
 // Configurations
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false })); Not used at the moment as JSON is passed
+app.use(bodyParser.json());
 
 // Routes
 app.use(word);

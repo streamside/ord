@@ -5,8 +5,11 @@ class Word extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isLoading: true,
+      showDescription: false
     };
+
+    this.setShowDescription = this.setShowDescription.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +23,46 @@ class Word extends Component {
           isLoading: false
         });
       });
+  }
+
+  setShowDescription() {
+    this.setState({showDescription: true});
+  }
+
+  setAnswer(correct) {
+    console.log('setAnswer', correct, this.state.word);
+    const wordId = this.state.word._id;
+    const options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        wordId,
+        correct
+      })
+    };
+    console.log('options', options);
+    fetch('/api/user/word', options).then(response => console.log(response));
+  }
+
+  renderActions() {
+    if (this.state.showDescription) {
+      return (
+        <div>
+          <div>
+          Kan du ordet?
+          </div>
+          <button className="button button-red" onClick={() => this.setAnswer(true)}>Ja</button>
+          <button className="button button-red" onClick={() => this.setAnswer(false)}>Nej</button>
+        </div>
+      )
+    } else {
+      return(
+        <button className="button button-red" onClick={this.setShowDescription}>Visa förklaring</button>
+      )
+    }
   }
 
   render() {
@@ -38,16 +81,18 @@ class Word extends Component {
         <header className="word-container">
           <h1 className="word-name">{name}</h1>
         </header>
-        <section className="word-information">
-          <div className="word-description">
-            {description}
-          </div>
-          <div className="word-inflection">
-            {inflection}
-          </div>
-        </section>
+        {this.state.showDescription &&
+          <section className="word-information">
+            <div className="word-description">
+              {description}
+            </div>
+            <div className="word-inflection">
+              {inflection}
+            </div>
+          </section>
+        }
         <section className="word-actions">
-          <button className="button button-red">Visa förklaring</button>
+          {this.renderActions()}
         </section>
       </div>
     );
