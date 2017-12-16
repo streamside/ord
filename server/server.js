@@ -2,11 +2,13 @@ var path = require('path');
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var Promise = require('bluebird');
 var word = require('./routes/word');
 var user = require('./routes/user');
 
 // DB
 mongoose.connect('mongodb://localhost/ord', { useMongoClient: true });
+mongoose.Promise = Promise
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 

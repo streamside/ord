@@ -1,5 +1,7 @@
 var _ = require('lodash');
 var router = require('express').Router();
+var Promise = require('bluebird');
+var errorHandler = require('../common/errorHandler');
 var User = require('../models/user');
 var Word = require('../models/word');
 
@@ -23,15 +25,11 @@ Returns:
 }
 */
 router.get('/api/user', function(req, res) {
-  return User.findOne({ userName })
+  console.log('/api/user');
+  User.findOne({ userName })
     .populate('words.word')
-    .exec(function(err, user) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      res.json(user)
-  });
+    .then(user => res.json(user))
+    .catch(err => errorHandler(err, res));
 });
 
 // Get word to answer
@@ -47,24 +45,14 @@ Returns:
 */
 router.get('/api/user/word', function(req, res) {
 
-  // Find words the user has answered
-  return User.findOne({ userName }).exec(function(err, user) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-
-    // Lookup words
-    return Word.find({}).exec(function(err, words) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      const wordIndex = _.random(0, words.length-1);
-      res.json(words[wordIndex]);
-    });
-  });
+  Promise.all([
+    User.findOne({ userName }),
+    Word.find({})
+  ]).spread((user, words) => {
+    // TODO Don't get same word again
+    const wordIndex = _.random(0, words.length-1);
+    res.json(words[wordIndex]);
+  }).catch(err => errorHandler(err, res));
 });
 
 // Answer if user knows the word
@@ -76,46 +64,36 @@ Input:
 }
 */
 router.post('/api/user/word', function(req, res) {
-  console.log(req.body);
-  const wordId = req.body.wordId;
-  const correct = req.body.correct;
+  console.log('/api/user/word');
+  const {
+    wordId,
+    correct
+  } = req.body;
 
-  return User.findOne({ userName }).exec(function(err, user) {
-    if (err) {
-      console.error(err);
-      return;
-    }
+  User.findOne({ userName })
+    .then(user => {
+      user.words.push({
+        word: wordId,
+        correct
+      });
 
-    user.words.push({
-      word: wordId,
-      correct
-    });
-    console.log('user', user)
-    user.save(function(err) {
-      console.log('saved used', err);
-    }).then(function(user) {
-      console.log('after save', user)
-      res.send('OK');
-    });
-  });
+      user.save()
+        .then(user => res.send('OK'))
+        .catch(err => errorHandler(err, res));
+    })
+    .catch(err => errorHandler(err, res));
 });
 
 // Wipes word answering history
 router.post('/api/user/resetWords', function(req, res) {
-  User.findOne({ userName }).exec(function(err, user) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-
-    user.words = [];
-    user.save(function(err) {
-      console.log('User saved. Error: ', err);
-    }).then(function(user) {
-      console.log('after save', user)
-      res.send('OK');
-    });
-  })
+  User.findOne({ userName })
+    .then(user => {
+      user.words = [];
+      user.save()
+        .then(user => res.send('OK'))
+        .catch(err => errorHandler(err, res));
+    })
+    .catch(err => errorHandler(err, res));
 });
 
 module.exports = router;

@@ -14,7 +14,6 @@ Server
 ----------------------------------------------
 
 Echo all URL access
-Improve error handling
-Reduce code duplication in user route
+-Error handling-
+-Reduce code duplication in user route-
 Authentication API
-Error handling
