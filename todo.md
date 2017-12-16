@@ -1,11 +1,12 @@
 Client
 ----------------------------------------------
 
-SASS pre-processor
-React router
+SASS
+-React router-
 Login page
 Registration page
 List answered words
+-Semantic UI-
 
 
 Server

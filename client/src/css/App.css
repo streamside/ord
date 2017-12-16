@@ -1,3 +1,26 @@
+/*
+ * Header
+ */
+.header {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  text-transform: lowercase;
+  background-color: #0bc6dc;
+  padding: 1.8rem;
+  text-align: left;
+}
+
+/*
+ * Navigation
+ */
+nav.ui.menu .item {
+  text-transform: uppercase;
+}
+
+/*
+ * New Word Page
+ */
 .word {
   text-align: center;
 }

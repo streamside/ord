@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Link,
+  NavLink,
   Route,
   Switch
 } from 'react-router-dom';
@@ -13,10 +13,15 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
-          <Link to="/">Home</Link>
-          <Link to="/user/word">Nytt Ord</Link>
-          <Link to="/user/mywords">Mina Ord</Link>
+        <div className="ui container">
+          <div className="header">Ord</div>
+          <nav className="ui secondary pointing menu">
+            <NavLink exact to="/" activeClassName="active" className="item">Home</NavLink>
+            <NavLink to="/user/word" activeClassName="active" className="item">Nytt Ord</NavLink>
+            <NavLink to="/user/mywords" activeClassName="active" className="item" data-badge="1">
+              <span className="mdl-badge" data-badge="4">Mina Ord</span>
+            </NavLink>
+          </nav>
 
           <Switch>
             <Route exact path="/" render={() => <h1>Home</h1>} />
