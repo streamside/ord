@@ -23,12 +23,14 @@ Returns:
 }
 */
 router.get('/api/user', function(req, res) {
-  return User.findOne({ userName }).exec(function(err, user) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    res.json(user)
+  return User.findOne({ userName })
+    .populate('words.word')
+    .exec(function(err, user) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      res.json(user)
   });
 });
 

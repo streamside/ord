@@ -5,8 +5,9 @@ SASS
 -React router-
 Login page
 Registration page
-List answered words
+-List answered words-
 -Semantic UI-
+Redux
 
 
 Server
@@ -16,3 +17,4 @@ Echo all URL access
 Improve error handling
 Reduce code duplication in user route
 Authentication API
+Error handling

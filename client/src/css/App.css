@@ -1,7 +1,7 @@
 /*
  * Header
  */
-.header {
+.ord-header {
   color: #fff;
   font-family: 'Playfair Display', serif;
   font-size: 3em;
@@ -16,6 +16,27 @@
  */
 nav.ui.menu .item {
   text-transform: uppercase;
+}
+
+/*
+ *  My Words
+ */
+.my-words .summary {
+  margin-top: 1rem;
+}
+
+.my-words .summary .ui.segment {
+  height: 9em;
+}
+
+.my-words .summary .count {
+  font-size: 5em;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.my-words .table {
+  margin-top: 3rem;
 }
 
 /*

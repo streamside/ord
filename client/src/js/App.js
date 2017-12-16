@@ -14,7 +14,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="ui container">
-          <div className="header">Ord</div>
+          <div className="ord-header">Ord</div>
           <nav className="ui secondary pointing menu">
             <NavLink exact to="/" activeClassName="active" className="item">Home</NavLink>
             <NavLink to="/user/word" activeClassName="active" className="item">Nytt Ord</NavLink>
