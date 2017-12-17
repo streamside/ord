@@ -7,8 +7,7 @@ const errorHandler = require('../common/errorHandler');
  */
 // List all words
 router.get('/api/words', (req, res) => {
-    console.log('Calling /api/words');
-    return Word.find()
+    Word.find()
       .then(words => res.json(words))
       .catch(err => errorHandler(err, res));
 });

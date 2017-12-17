@@ -25,7 +25,6 @@ Returns:
 }
 */
 router.get('/api/user', function(req, res) {
-  console.log('/api/user');
   User.findOne({ userName })
     .populate('words.word')
     .then(user => res.json(user))
@@ -64,7 +63,6 @@ Input:
 }
 */
 router.post('/api/user/word', function(req, res) {
-  console.log('/api/user/word');
   const {
     wordId,
     correct

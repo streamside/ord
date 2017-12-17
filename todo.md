@@ -18,4 +18,4 @@ Server
 -Error handling-
 -Reduce code duplication in user route-
 Authentication API
-Node Mon to prevent server restarts
+-Node Mon to prevent server restarting-
