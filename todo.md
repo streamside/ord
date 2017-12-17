@@ -1,7 +1,7 @@
 Client
 ----------------------------------------------
 
-SASS
+-SASS-
 -React router-
 Login page
 Registration page
