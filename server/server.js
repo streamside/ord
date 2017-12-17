@@ -1,24 +1,30 @@
 var path = require('path');
 var express = require('express');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
 var Promise = require('bluebird');
+var morgan = require('morgan');
 var word = require('./routes/word');
 var user = require('./routes/user');
 
-// DB
+
+/*
+ * DB
+ */
 mongoose.connect('mongodb://localhost/ord', { useMongoClient: true });
 mongoose.Promise = Promise
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
-// Express
+
+/*
+ * Express
+ */
 var app = express();
 
 // Configurations
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(bodyParser.urlencoded({ extended: false })); Not used at the moment as JSON is passed
 app.use(bodyParser.json());
+app.use(morgan('tiny'))
 
 // Routes
 app.use(word);
