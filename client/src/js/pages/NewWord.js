@@ -51,16 +51,13 @@ class Word extends Component {
     if (this.state.showDescription) {
       return (
         <div>
-          <div>
-          Kan du ordet?
-          </div>
-          <button className="button button-red" onClick={() => this.setAnswer(true)}>Ja</button>
-          <button className="button button-red" onClick={() => this.setAnswer(false)}>Nej</button>
+          <button className="button button-blue" onClick={() => this.setAnswer(true)}>Ja</button>
+          <button className="button button-blue" onClick={() => this.setAnswer(false)}>Nej</button>
         </div>
       )
     } else {
       return(
-        <button className="button button-red" onClick={this.setShowDescription}>Visa förklaring</button>
+        <button className="button button-blue" onClick={this.setShowDescription}>Visa förklaring</button>
       )
     }
   }
@@ -77,7 +74,10 @@ class Word extends Component {
     } = this.state.word;
 
     return (
-      <div className="word">
+      <div className="new-word">
+        <div className="do-you-know">
+          Kan du ordet?
+        </div>
         <header className="word-container">
           <h1 className="word-name">{name}</h1>
         </header>
