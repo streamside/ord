@@ -24,7 +24,8 @@ Software:
 
 Use these URLs to import sample data:
 
-localhost:3001/api/data/importUsers
-localhost:3001/api/data/importWords
+[localhost:3001/api/data/importUsers](http://localhost:3001/api/data/importUsers)
+
+[localhost:3001/api/data/importWords](http://localhost:3001/api/data/importWords)
 
 Navigate to localhost:3000 in your favorite browser.
