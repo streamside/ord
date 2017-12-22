@@ -1,0 +1,43 @@
+[{
+  "name": "panegyrik",
+  "description": "entusiastisk och o­kritisk lov­prisning",
+  "difficulty": 95,
+  "wordClass": "substantiv",
+  "inflection": "~en ~er",
+  "examples": ["hans biografi över vännen är o­tillförlitlig då den ofta ur­artar till rena panegyriken"]
+}, {
+  "name": "bärsärkagång",
+  "description": "våldsam framfart under raseriutbrott",
+  "difficulty": 80,
+  "wordClass": "substantiv",
+  "inflection": "~en",
+  "examples": ["de drack sig fulla och gick bärsärkagång"]
+}, {
+  "name": "impertinent",
+  "description": "respekt­löst upp­riktig eller när­gången om person, handling e.d.",
+  "difficulty": 85,
+  "wordClass": "substantiv",
+  "inflection": "~",
+  "examples": ["reporterns impertinenta frågor om bonus­program"]
+}, {
+  "name": "verserad",
+  "description": "mycket artig och världs­van",
+  "difficulty": 80,
+  "wordClass": "adjektiv",
+  "inflection": "",
+  "examples": ["hans verserade och eleganta konversation"]
+}, {
+  "name": "anomali",
+  "description": "o­rimlig före­teelse eller o­rimligt förhållande",
+  "difficulty": 60,
+  "wordClass": "substantiv",
+  "inflection": "~n ~er",
+  "examples": ["barn­arbete är en anomali i det moderna sam­hället"]
+}, {
+  "name": "perplex",
+  "description": "(märkbart) förbluffad över ngn plötslig vändning e.d.",
+  "difficulty": 80,
+  "wordClass": "adjektiv",
+  "inflection": "~t",
+  "examples": ["han blev helt perplex när främlingen till­talade honom med hans för­namn"]
+}]

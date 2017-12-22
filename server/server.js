@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var word = require('./routes/word');
 var user = require('./routes/user');
+var data = require('./routes/data');
 
 
 /*
@@ -25,11 +26,12 @@ var app = express();
 // Configurations
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-app.use(morgan('tiny'))
+app.use(morgan('tiny'));
 
 // Routes
 app.use(word);
 app.use(user);
+app.use(data);
 
 // Start server
 app.listen(3001, () => console.log('Server started on port 3001...'));

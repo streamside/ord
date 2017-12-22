@@ -6,7 +6,7 @@ var User = require('../models/user');
 var Word = require('../models/word');
 
 // TODO Read from session / cookie / request
-const userName = 'streamside';
+const userName = 'teststudent';
 
 /*
  * User

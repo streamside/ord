@@ -1,0 +1,13 @@
+[{
+  "userName": "teststudent",
+  "password": "12345",
+  "email": "teststudent@foo.com",
+  "words": [],
+  "access": ["student"]
+}, {
+  "userName": "testadmin",
+  "password": "12345",
+  "email": "testadmin@foo.com",
+  "words": [],
+  "access": ["student", "admin"]
+}]
