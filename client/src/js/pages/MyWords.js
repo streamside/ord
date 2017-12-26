@@ -84,7 +84,9 @@ class MyWords extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return "Loading...";
+      return (
+        <div className="ui active loader" />
+      );
     }
 
     return (

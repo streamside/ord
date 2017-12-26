@@ -16,10 +16,21 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ord-header">Ord</div>
           <nav className="ui secondary pointing menu">
-            <NavLink exact to="/" activeClassName="active" className="item">Home</NavLink>
-            <NavLink to="/user/word" activeClassName="active" className="item">Nytt Ord</NavLink>
-            <NavLink to="/user/mywords" activeClassName="active" className="item" data-badge="1">
-              <span className="mdl-badge" data-badge="4">Mina Ord</span>
+            <NavLink exact to="/" activeClassName="active" className="item">
+              <i className="ti ti-house"/>
+              Home
+            </NavLink>
+            <NavLink to="/user/word" activeClassName="active" className="item">
+              <i className="ti ti-tag" />
+              Nytt Ord
+            </NavLink>
+            <NavLink to="/user/mywords" activeClassName="active" className="item">
+              <i className="ti ti-message" />
+              Mina Ord
+            </NavLink>
+            <NavLink to="/user/badges" activeClassName="active" className="item">
+              <i className="ti ti-trophy" />
+              Badges
             </NavLink>
           </nav>
 

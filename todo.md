@@ -8,7 +8,7 @@ Registration page
 -List answered words-
 -Semantic UI-
 Redux
-Get new word when answering yes / no
+-Get new word when answering yes / no-
 
 
 Server
@@ -20,3 +20,4 @@ Server
 Authentication API
 -Node Mon to prevent server restarting-
 -Import word and user data-
+Don't repeat correct answered words

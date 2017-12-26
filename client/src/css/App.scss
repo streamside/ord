@@ -18,7 +18,13 @@ $word-font: 'Cormorant Garamond';
  * Navigation
  */
 nav.ui.menu .item {
+  font-size: 1.1em;
   text-transform: uppercase;
+
+  .ti {
+    font-size: 1.6em;
+    padding-right: 0.4em;
+  }
 }
 
 /*
@@ -74,7 +80,9 @@ nav.ui.menu .item {
     padding-top: 1rem;
     font-size: 1.2em;
     font-style: italic;
+    text-transform: uppercase;
     color: #444;
+    display: none;
   }
 
   .word-name {
@@ -108,7 +116,13 @@ nav.ui.menu .item {
   }
 
   .word-actions {
-    padding-top: 1rem;
+    padding-top: 2rem;
+
+    .answer-action-text {
+      margin-top: 2em;
+      font-size: 1.3em;
+      font-style: italic;
+    }
   }
 }
 
@@ -122,7 +136,7 @@ nav.ui.menu .item {
   color: inherit;
   background: none;
   cursor: pointer;
-  padding: 25px 50px;
+  padding: 20px 40px;
   display: inline-block;
   margin: 15px 30px 15px 0;
   text-transform: uppercase;
@@ -130,27 +144,14 @@ nav.ui.menu .item {
   font-weight: 700;
   outline: none;
   position: relative;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
+
 
   &.button-blue {
-    background-color: $primary-color;
-    color: #fff;
-    box-shadow: 0 6px $button-shadow;
-    -webkit-transition: none;
-    -moz-transition: none;
-    transition: none;
     border-radius: 40px;
-
-    &:active {
-      box-shadow: 0 0 $button-shadow;
-      top: 6px;
-    }
+    border: 1px solid #333;
 
     &:hover {
-      box-shadow: 0 4px $button-shadow;
-      top: 2px;
+      background-color: #f3f3f3;
     }
   }
 }

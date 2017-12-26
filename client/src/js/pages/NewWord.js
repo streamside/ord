@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 
+const defaultState = {
+  isLoading: true,
+  showDescription: false,
+  word: null
+};
+
 class Word extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isLoading: true,
-      showDescription: false
-    };
+    this.state = defaultState;
 
     this.setShowDescription = this.setShowDescription.bind(this);
+    this.getNextWord = this.getNextWord.bind(this);
   }
 
   componentDidMount() {
-    console.log('About to make words request');
+    this.getNextWord();
+  }
+
+  getNextWord() {
+    console.log('About to get next word', this);
+    this.setState(defaultState);
     fetch('/api/user/word')
       .then(response => response.json())
       .then(word => {
@@ -44,13 +53,16 @@ class Word extends Component {
       })
     };
     console.log('options', options);
-    fetch('/api/user/word', options).then(response => console.log(response));
+    fetch('/api/user/word', options)
+      .then(response => console.log(response))
+      .then(this.getNextWord);
   }
 
   renderActions() {
     if (this.state.showDescription) {
       return (
         <div>
+          <div className="answer-action-text">Kunde du ordet?</div>
           <button className="button button-blue" onClick={() => this.setAnswer(true)}>Ja</button>
           <button className="button button-blue" onClick={() => this.setAnswer(false)}>Nej</button>
         </div>
@@ -64,7 +76,9 @@ class Word extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return "Loading...";
+      return (
+        <div className="ui active loader" />
+      );
     }
 
     const {
@@ -76,7 +90,7 @@ class Word extends Component {
     return (
       <div className="new-word">
         <div className="do-you-know">
-          Kan du ordet?
+          Ditt nya ord:
         </div>
         <header className="word-container">
           <h1 className="word-name">{name}</h1>
